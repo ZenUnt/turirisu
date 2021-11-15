@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class FishController : MonoBehaviour
 {
-    private float speed = 0.04f;
+    private const float START_SPEED = 0.04f;
+    private const float MAX_SPEED = 0.06f;
+    private const float MIN_SPEED = 0.02f;
+
+
+    private float speed;
     private int moveDirection = -1;
     private bool isFished;
 
     void Start() {
+        speed = START_SPEED;
         isFished = false;
     }
 
@@ -16,7 +22,7 @@ public class FishController : MonoBehaviour
         if (!isFished) {
             Vector3 scale = transform.localScale;
             if (transform.position.x > 3f) {
-                speed = Random.Range(0.02f, 0.06f);
+                speed = Random.Range(MIN_SPEED, MAX_SPEED);
                 moveDirection = -1;
                 if (transform.name.Substring(0, 5) == "fish5") {
                     scale.x = 0.3f;
@@ -24,7 +30,7 @@ public class FishController : MonoBehaviour
                     scale.x = 0.2f;
                 }
             } else if (transform.position.x < -3f) {
-                speed = Random.Range(0.02f, 0.06f);
+                speed = Random.Range(MIN_SPEED, MAX_SPEED);
                 moveDirection = 1;
                 if (transform.name.Substring(0, 5) == "fish5") {
                     scale.x = -0.3f;

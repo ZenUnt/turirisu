@@ -115,7 +115,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void RequestBanner() {
-
         // 広告ユニットID
         string adUnitId = ADS_ID;
         // Create a 320x50 banner at the top of the screen.
@@ -156,6 +155,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void RestartGame() {
+        bannerView.Destroy();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
